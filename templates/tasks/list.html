@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body style="background-color:powderblue;">
+<center>
+<div class="jumbotron">
+    <h1>WRITE YOUR TO DO </h1>
+</div>
+
+<div>
+    <form method="POST" action="/">
+        {% csrf_token %}
+        {{ form.title }}
+        <input type="submit" name="Create Task">
+    </form>
+</div>
+
+<ul>
+    {% for task in tasks %}
+        <li>
+            <p>
+                {% if task.complete == True %}
+                    <strike>{{ task.title }}</strike>
+                {% else %}
+                    <span>{{ task.title }}</span>
+                {% endif %}
+                <a href="{% url 'update' task.id %}">Update</a>
+                <a href="{% url 'delete' task.id %}">Delete</a>
+            </p>
+        </li>
+    {% endfor %}
+</ul>
+</center>
+</body>
+</html>
