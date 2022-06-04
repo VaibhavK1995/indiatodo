@@ -1,0 +1,13 @@
+<body style="background-color:lightgreen;">
+<center>
+<h2>Confirm Delete ? " {{ item }}"</h2>
+
+<form method="POST">
+    {% csrf_token %}
+  <p>  <input type="submit" name="confirm"></p>
+    <a href="{% url 'list' %}" class="btn btn-primary btn-lg"  role="button">Cancel</a>
+</form>
+
+</center>
+</body>
+
